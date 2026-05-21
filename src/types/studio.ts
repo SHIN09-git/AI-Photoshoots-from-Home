@@ -133,6 +133,9 @@ export type GeneratedImage = {
   width?: number;
   height?: number;
   isFavorite: boolean;
+  scoreIdentity?: number;
+  scoreLocation?: number;
+  scoreComposition?: number;
   createdAt: string;
   deletedAt?: string;
 };

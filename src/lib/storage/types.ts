@@ -26,4 +26,5 @@ export type StorageProvider = {
   getObject(storageKey: string): Promise<LoadedObject>;
   deleteObject(storageKey: string): Promise<void>;
   publicUrl(storageKey: string): string;
+  healthCheck(): Promise<boolean>;
 };

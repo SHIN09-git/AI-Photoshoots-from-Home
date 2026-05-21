@@ -9,6 +9,11 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
+    "postinstall": "prisma generate",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "cross-env RUST_LOG=trace prisma migrate dev",
+    "prisma:seed": "prisma db seed",
+    "db:reset": "cross-env RUST_LOG=trace prisma migrate reset --force",
     "db:migrate": "cross-env RUST_LOG=trace prisma migrate dev",
     "db:seed": "prisma db seed"
   },

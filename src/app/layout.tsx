@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Link href="/gallery">画廊</Link>
             <Link href="/templates">模板</Link>
             <Link href="/admin/templates">后台</Link>
+            <Link href="/status">状态</Link>
           </nav>
           <div className="status-strip">
             <span className="status-dot" />

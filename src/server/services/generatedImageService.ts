@@ -18,6 +18,9 @@ type ImageRecord = {
   width: number | null;
   height: number | null;
   isFavorite: boolean;
+  scoreIdentity: number | null;
+  scoreLocation: number | null;
+  scoreComposition: number | null;
   createdAt: Date;
   deletedAt: Date | null;
 };
@@ -48,6 +51,21 @@ export async function setFavorite(imageId: string, isFavorite: boolean, userId =
   const image = await prisma.generatedImage.update({
     where: { id: imageId },
     data: { isFavorite }
+  });
+  const assets = await assetsFor([image]);
+  return toGeneratedImage(image, assets);
+}
+
+export async function updateQualityScores(
+  imageId: string,
+  scores: { scoreIdentity?: number | null; scoreLocation?: number | null; scoreComposition?: number | null },
+  userId = DEFAULT_USER_ID
+): Promise<GeneratedImage | undefined> {
+  const existing = await prisma.generatedImage.findFirst({ where: { id: imageId, userId, deletedAt: null } });
+  if (!existing) return undefined;
+  const image = await prisma.generatedImage.update({
+    where: { id: imageId },
+    data: scores
   });
   const assets = await assetsFor([image]);
   return toGeneratedImage(image, assets);
@@ -87,6 +105,9 @@ export function toGeneratedImage(image: ImageRecord, assets: AssetLookup): Gener
     width: image.width ?? undefined,
     height: image.height ?? undefined,
     isFavorite: image.isFavorite,
+    scoreIdentity: image.scoreIdentity ?? undefined,
+    scoreLocation: image.scoreLocation ?? undefined,
+    scoreComposition: image.scoreComposition ?? undefined,
     createdAt: image.createdAt.toISOString(),
     deletedAt: image.deletedAt?.toISOString()
   };

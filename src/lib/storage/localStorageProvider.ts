@@ -59,6 +59,16 @@ export class LocalStorageProvider implements StorageProvider {
     return `/api/storage/${storageKey.split("/").map(encodeURIComponent).join("/")}`;
   }
 
+  async healthCheck(): Promise<boolean> {
+    const key = `.health/${crypto.randomUUID()}.txt`;
+    const filePath = this.resolve(key);
+    await mkdir(path.dirname(filePath), { recursive: true });
+    await writeFile(filePath, "ok", "utf8");
+    const content = await readFile(filePath, "utf8");
+    await rm(filePath, { force: true });
+    return content === "ok";
+  }
+
   private resolve(storageKey: string): string {
     const normalized = storageKey.replaceAll("\\", "/");
     const resolved = path.resolve(this.root, normalized);

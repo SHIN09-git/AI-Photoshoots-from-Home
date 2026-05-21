@@ -76,3 +76,11 @@ export const regenerateSchema = z.object({
   creativity: z.enum(["safe", "balanced", "wild"]).optional(),
   customNote: z.string().max(1200).optional()
 });
+
+const scoreSchema = z.number().int().min(1).max(5).nullable().optional();
+
+export const qualityScoreSchema = z.object({
+  scoreIdentity: scoreSchema,
+  scoreLocation: scoreSchema,
+  scoreComposition: scoreSchema
+});

@@ -117,6 +117,9 @@ model GeneratedImage {
   width            Int?
   height           Int?
   isFavorite       Boolean       @default(false)
+  scoreIdentity    Int?
+  scoreLocation    Int?
+  scoreComposition Int?
   createdAt        DateTime      @default(now())
   deletedAt        DateTime?
 }

@@ -9,6 +9,9 @@ type ResultGridProps = {
   onDelete: (image: GeneratedImage) => void;
   onRegenerate: (image: GeneratedImage) => void;
   onOpenPrompt: (image: GeneratedImage) => void;
+  onRate?: (image: GeneratedImage, scores: Partial<Pick<GeneratedImage, "scoreIdentity" | "scoreLocation" | "scoreComposition">>) => void;
+  selectedImageIds?: string[];
+  onToggleCompare?: (image: GeneratedImage) => void;
 };
 
 export function ResultGrid(props: ResultGridProps) {
@@ -34,7 +37,10 @@ export function ResultGrid(props: ResultGridProps) {
           onDelete={props.onDelete}
           onFavorite={props.onFavorite}
           onOpenPrompt={props.onOpenPrompt}
+          onRate={props.onRate}
           onRegenerate={props.onRegenerate}
+          isSelected={props.selectedImageIds?.includes(image.id)}
+          onToggleCompare={props.onToggleCompare}
         />
       ))}
     </div>

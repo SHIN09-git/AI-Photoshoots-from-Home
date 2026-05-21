@@ -21,6 +21,11 @@ export function PromptPreviewDrawer({ image, onClose }: PromptPreviewDrawerProps
           <button className="tool-button" type="button" onClick={onClose} aria-label="关闭"><X size={16} /></button>
         </div>
         <div className="drawer-body">
+          <div className="prompt-summary">
+            <span>Provider: {image.provider}{image.providerModel ? ` / ${image.providerModel}` : ""}</span>
+            <span>Seed: {image.seed ?? "-"}</span>
+            <span>Scores: I {image.scoreIdentity ?? "-"} · L {image.scoreLocation ?? "-"} · C {image.scoreComposition ?? "-"}</span>
+          </div>
           <div className="field">
             <label>Prompt</label>
             <pre className="prompt-box">{image.prompt}</pre>
