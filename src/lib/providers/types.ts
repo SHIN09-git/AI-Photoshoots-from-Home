@@ -1,12 +1,16 @@
+import type { GenerationSettings } from "@/types/studio";
 import type { PromptMatrixItem } from "@/types/studio";
 
 export type GenerateImageInput = {
   referenceImages: Array<{
     url: string;
+    buffer?: Buffer;
+    filename?: string;
     mimeType: string;
   }>;
   prompt: string;
   negativePrompt?: string;
+  settings?: GenerationSettings;
   width?: number;
   height?: number;
   count?: number;
@@ -25,6 +29,9 @@ export type GeneratedImageResult = {
   height?: number;
   seed?: string;
   providerRaw?: unknown;
+  provider?: string;
+  model?: string;
+  metadata?: Record<string, unknown>;
 };
 
 export type ImageGenerationProvider = {

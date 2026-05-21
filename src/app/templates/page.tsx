@@ -1,8 +1,10 @@
 import { templateCoverUrl } from "@/lib/templateCover";
 import { listTemplates } from "@/server/services/templateService";
 
-export default function TemplatesPage() {
-  const templates = listTemplates();
+export const dynamic = "force-dynamic";
+
+export default async function TemplatesPage() {
+  const templates = await listTemplates();
 
   return (
     <section className="page-panel">

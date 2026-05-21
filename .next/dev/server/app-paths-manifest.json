@@ -1,7 +1,0 @@
-{
-  "/api/assets/upload/route": "app/api/assets/upload/route.js",
-  "/api/generation-jobs/[id]/route": "app/api/generation-jobs/[id]/route.js",
-  "/api/generation-jobs/route": "app/api/generation-jobs/route.js",
-  "/api/templates/route": "app/api/templates/route.js",
-  "/studio/page": "app/studio/page.js"
-}

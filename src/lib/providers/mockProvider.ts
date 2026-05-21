@@ -29,6 +29,9 @@ export class MockImageProvider implements ImageGenerationProvider {
         width: 900,
         height: 1125,
         seed,
+        provider: this.id,
+        model: this.model,
+        metadata: { source: "mock-svg", referenceImageCount: input.referenceImages.length },
         providerRaw: { provider: "mock" }
       }
     ];

@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -20,19 +19,21 @@ model User {
 }
 
 model Asset {
-  id        String    @id @default(cuid())
-  userId    String
-  user      User      @relation(fields: [userId], references: [id])
-  type      AssetType
-  url       String
-  thumbUrl  String?
-  mimeType  String
-  size      Int
-  width     Int?
-  height    Int?
-  metadata  Json?
-  createdAt DateTime  @default(now())
-  deletedAt DateTime?
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+  type       AssetType
+  storageKey String
+  url        String
+  mimeType   String
+  sizeBytes  Int
+  hash       String
+  width      Int?
+  height     Int?
+  createdAt  DateTime  @default(now())
+  deletedAt  DateTime?
+
+  generatedImages GeneratedImage[]
 }
 
 enum AssetType {
@@ -77,7 +78,10 @@ model GenerationJob {
   promptMatrix      Json
   provider          String
   providerModel     String?
+  completedCount    Int            @default(0)
+  failedCount       Int            @default(0)
   errorMessage      String?
+  providerError     String?
   createdAt         DateTime       @default(now())
   startedAt         DateTime?
   completedAt       DateTime?
@@ -95,23 +99,24 @@ enum JobStatus {
 }
 
 model GeneratedImage {
-  id             String   @id @default(cuid())
-  userId         String
-  user           User     @relation(fields: [userId], references: [id])
-  jobId          String
-  job            GenerationJob @relation(fields: [jobId], references: [id])
-  assetId        String?
-  url            String
-  thumbUrl       String?
-  prompt         String
-  negativePrompt String?
-  variables      Json
-  provider       String
-  providerModel  String?
-  seed           String?
-  width          Int?
-  height         Int?
-  isFavorite     Boolean  @default(false)
-  createdAt      DateTime @default(now())
-  deletedAt      DateTime?
+  id               String        @id @default(cuid())
+  userId           String
+  user             User          @relation(fields: [userId], references: [id])
+  jobId            String
+  job              GenerationJob @relation(fields: [jobId], references: [id])
+  assetId          String?
+  asset            Asset?        @relation(fields: [assetId], references: [id])
+  prompt           String
+  negativePrompt   String?
+  variables        Json
+  provider         String
+  providerModel    String?
+  providerMetadata Json?
+  providerError    String?
+  seed             String?
+  width            Int?
+  height           Int?
+  isFavorite       Boolean       @default(false)
+  createdAt        DateTime      @default(now())
+  deletedAt        DateTime?
 }

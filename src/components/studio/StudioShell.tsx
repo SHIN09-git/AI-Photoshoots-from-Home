@@ -39,6 +39,7 @@ export function StudioShell() {
   const [activeJobId, setActiveJobId] = useState<string>();
   const [activeJob, setActiveJob] = useState<JobDetail | null>(null);
   const [drawerImage, setDrawerImage] = useState<GeneratedImage | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string>();
 
   useEffect(() => {
@@ -60,7 +61,10 @@ export function StudioShell() {
       const response = await fetch(`/api/generation-jobs/${activeJobId}`);
       if (!response.ok) throw new Error(await response.text());
       const job = await response.json() as JobDetail;
-      if (!closed) setActiveJob(job);
+      if (!closed) {
+        setActiveJob(job);
+        setIsSubmitting(false);
+      }
     }
 
     void refresh().catch((reason) => setError(String(reason)));
@@ -80,7 +84,7 @@ export function StudioShell() {
   );
 
   const isRunning = activeJob?.status === "QUEUED" || activeJob?.status === "RUNNING";
-  const canGenerate = Boolean(references.length && consent && selectedTemplate && !isRunning);
+  const canGenerate = Boolean(references.length && consent && selectedTemplate && !isRunning && !isSubmitting);
 
   function toggleVariable(key: keyof SelectedVariableInput, value: string) {
     setSelectedVariables((current) => {
@@ -96,23 +100,30 @@ export function StudioShell() {
   async function generate() {
     if (!selectedTemplate || !canGenerate) return;
     setError(undefined);
-    const response = await fetch("/api/generation-jobs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        templateId: selectedTemplate.id,
-        referenceAssetIds: references.map((asset) => asset.id),
-        requestedCount: count,
-        settings,
-        selectedVariables
-      })
-    });
-    if (!response.ok) {
-      setError(await response.text());
-      return;
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/generation-jobs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          templateId: selectedTemplate.id,
+          referenceAssetIds: references.map((asset) => asset.id),
+          requestedCount: count,
+          settings,
+          selectedVariables
+        })
+      });
+      if (!response.ok) {
+        setError(await response.text());
+        setIsSubmitting(false);
+        return;
+      }
+      const payload = await response.json() as { jobId: string };
+      setActiveJobId(payload.jobId);
+    } catch (reason) {
+      setError(String(reason));
+      setIsSubmitting(false);
     }
-    const payload = await response.json() as { jobId: string };
-    setActiveJobId(payload.jobId);
   }
 
   async function refreshActiveJob() {
@@ -155,7 +166,7 @@ export function StudioShell() {
           <PersonReferenceUploader
             assets={references}
             consent={consent}
-            disabled={isRunning}
+            disabled={isRunning || isSubmitting}
             onConsentChange={setConsent}
             onRemove={(assetId) => setReferences((current) => current.filter((asset) => asset.id !== assetId))}
             onUploaded={(asset) => setReferences((current) => [...current, asset].slice(0, 3))}
@@ -178,12 +189,13 @@ export function StudioShell() {
             </div>
             <div className="stack">
               <button className="primary-button" type="button" disabled={!canGenerate} onClick={() => void generate()}>
-                {buttonLabel({ references: references.length, consent, selectedTemplate: Boolean(selectedTemplate), isRunning, count, activeJob })}
+                {buttonLabel({ references: references.length, consent, selectedTemplate: Boolean(selectedTemplate), isRunning, isSubmitting, count, activeJob })}
               </button>
             </div>
           </div>
           <JobProgress job={activeJob} />
           {error ? <div className="error-strip">{error}</div> : null}
+          {activeJob?.providerError ? <div className="error-strip">{activeJob.providerError}</div> : null}
           <div className="results-wrap">
             <ResultGrid
               images={activeJob?.images ?? []}
@@ -205,9 +217,11 @@ function buttonLabel(input: {
   consent: boolean;
   selectedTemplate: boolean;
   isRunning: boolean;
+  isSubmitting: boolean;
   count: number;
   activeJob: JobDetail | null;
 }): string {
+  if (input.isSubmitting) return "正在提交任务";
   if (input.isRunning) return `正在生成 ${input.activeJob?.progress.completed ?? 0}/${input.activeJob?.progress.total ?? input.count}`;
   if (!input.references) return "先上传人像";
   if (!input.consent) return "确认授权后生成";

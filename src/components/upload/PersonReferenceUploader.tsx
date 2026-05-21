@@ -69,7 +69,7 @@ export function PersonReferenceUploader({
           {assets.map((asset) => (
             <div className="reference-card" key={asset.id}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset.thumbUrl ?? asset.url} alt="人像参考" />
+              <img src={asset.url} alt="人像参考" />
               <button className="tool-button danger" type="button" onClick={() => onRemove(asset.id)} aria-label="删除参考图">
                 <X size={15} />
               </button>

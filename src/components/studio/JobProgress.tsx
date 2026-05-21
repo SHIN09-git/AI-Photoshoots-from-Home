@@ -7,13 +7,14 @@ type JobProgressProps = {
 };
 
 export function JobProgress({ job }: JobProgressProps) {
-  const percent = job ? Math.round((job.progress.completed / job.progress.total) * 100) : 0;
+  const finished = job ? job.progress.completed + job.progress.failed : 0;
+  const percent = job ? Math.round((finished / job.progress.total) * 100) : 0;
   return (
     <div className="job-bar">
       <div>
         <div className="progress-meta">
           <span>{job ? statusText(job.status) : "等待创建任务"}</span>
-          <span>{job ? `${job.progress.completed}/${job.progress.total}` : "0/0"}</span>
+          <span>{job ? `${job.progress.completed}/${job.progress.total}${job.progress.failed ? ` · 失败 ${job.progress.failed}` : ""}` : "0/0"}</span>
         </div>
         <div className="progress-track"><div className="progress-fill" style={{ width: `${percent}%` }} /></div>
       </div>

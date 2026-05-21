@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { getStorageProvider } from "@/lib/storage";
 import { createAsset } from "@/server/services/assetService";
 
 export const runtime = "nodejs";
@@ -24,16 +25,15 @@ export async function POST(request: Request) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
-  const dataUrl = `data:${file.type};base64,${buffer.toString("base64")}`;
-  const asset = createAsset({
-    type,
-    url: dataUrl,
-    thumbUrl: dataUrl,
+  const stored = await getStorageProvider().putObject({
+    buffer,
     mimeType: file.type,
-    size: file.size,
-    metadata: {
-      originalName: file.name
-    }
+    prefix: type === "TEMPLATE_COVER" ? "templates" : "references",
+    filename: file.name
+  });
+  const asset = await createAsset({
+    type,
+    ...stored
   });
 
   return NextResponse.json(asset);

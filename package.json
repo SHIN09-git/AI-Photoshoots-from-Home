@@ -8,13 +8,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:migrate": "cross-env RUST_LOG=trace prisma migrate dev",
+    "db:seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.17.3",
+    "@prisma/adapter-libsql": "^7.8.0",
     "@prisma/client": "latest",
     "clsx": "latest",
     "lucide-react": "latest",
     "next": "latest",
+    "openai": "^6.38.0",
     "react": "latest",
     "react-dom": "latest",
     "zod": "latest"
@@ -23,9 +31,11 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-config-next": "latest",
     "prisma": "latest",
+    "tsx": "^4.22.3",
     "typescript": "latest",
     "vitest": "latest"
   }

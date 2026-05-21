@@ -1,5 +1,5 @@
-import { defaultTemplateVariables } from "@/lib/prompt/variables";
-import type { StudioTemplate } from "@/types/studio";
+import { defaultTemplateVariables } from "../../lib/prompt/variables";
+import type { StudioTemplate } from "../../types/studio";
 
 const now = new Date().toISOString();
 
