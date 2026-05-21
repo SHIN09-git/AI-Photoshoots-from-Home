@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/_next/static/chunks/09f0fz_--~2cs.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/0jl966cpabt0n.js"/><script src="/_next/static/chunks/00q.4~c4ydi_o.js" async=""></script><script src="/_next/static/chunks/09bab9~qvzfja.js" async=""></script><script src="/_next/static/chunks/0y-t4k-tl9sur.js" async=""></script><script src="/_next/static/chunks/turbopack-0u0gw87mqfo1a.js" async=""></script><script src="/_next/static/chunks/070g9zc2xw1t7.js" async=""></script><script src="/_next/static/chunks/0czfy4s-0u4rp.js" async=""></script><script src="/_next/static/chunks/0o8-b98d~flew.js" async=""></script><title>AI 摄影棚</title><meta name="description" content="上传人像并批量生成地点一致的人像写真"/><script src="/_next/static/chunks/03~yq9q893hmn.js" noModule=""></script></head><body><div hidden=""><!--$--><!--/$--></div><header class="topbar"><a class="brand" href="/studio"><span class="brand-mark">AI</span><span>AI 摄影棚</span></a><nav class="nav" aria-label="主导航"><a href="/studio">摄影棚</a><a href="/gallery">画廊</a><a href="/templates">模板</a><a href="/admin/templates">后台</a></nav><div class="status-strip"><span class="status-dot"></span><span>Provider: <!-- -->mock</span></div></header><main class="page"><section class="two-col"><div class="page-panel"><div class="admin-toolbar"><div><h1 class="workspace-title">模板后台</h1><p class="workspace-subtitle">0<!-- --> 个启用中</p></div><button class="primary-button" type="button">新建</button></div><div class="admin-list"></div></div><div class="page-panel"><h2>新建模板</h2><div class="template-form stack"><div class="form-grid"><div class="field "><label>名称</label><input value=""/></div><div class="field "><label>Slug</label><input value=""/></div><div class="field "><label>分类</label><input value=""/></div><div class="field "><label>标签（逗号分隔）</label><input value=""/></div><div class="field full"><label>说明</label><textarea></textarea></div><div class="field full"><label>Prompt Base</label><textarea>Create a realistic editorial portrait photo based on the uploaded person reference.</textarea></div><div class="field full"><label>Negative Prompt</label><textarea></textarea></div><div class="field "><label>地点名称</label><input value=""/></div><div class="field "><label>封面色板</label><input value="#0f766e, #c88925, #e75f48, #416b4a"/></div><div class="field full"><label>稳定空间锚点（每行一条）</label><textarea></textarea></div><div class="field full"><label>前景元素（每行一条）</label><textarea></textarea></div><div class="field full"><label>背景元素（每行一条）</label><textarea></textarea></div><div class="field full"><label>光线（每行一条）</label><textarea></textarea></div><div class="field full"><label>地点色彩（逗号分隔）</label><input value=""/></div><div class="field full"><label>变量选项 seasons（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;spring&quot;,
+    &quot;label&quot;: &quot;春&quot;,
+    &quot;prompt&quot;: &quot;spring atmosphere, fresh air, soft blossoms, gentle colors, subtle seasonal details&quot;
+  },
+  {
+    &quot;id&quot;: &quot;summer&quot;,
+    &quot;label&quot;: &quot;夏&quot;,
+    &quot;prompt&quot;: &quot;summer evening, humid air, slightly glowing skin, vivid city colors, light breathable outfit&quot;
+  },
+  {
+    &quot;id&quot;: &quot;autumn&quot;,
+    &quot;label&quot;: &quot;秋&quot;,
+    &quot;prompt&quot;: &quot;autumn mood, golden leaves, dry crisp air, warm earthy palette, elegant calm atmosphere&quot;
+  },
+  {
+    &quot;id&quot;: &quot;winter&quot;,
+    &quot;label&quot;: &quot;冬&quot;,
+    &quot;prompt&quot;: &quot;winter atmosphere, cold air, layered outfit, subtle breath mist, cool shadows, warm lights&quot;
+  },
+  {
+    &quot;id&quot;: &quot;rainy&quot;,
+    &quot;label&quot;: &quot;雨季&quot;,
+    &quot;prompt&quot;: &quot;rainy season, wet pavement, reflections, umbrella optional, moody cinematic atmosphere&quot;
+  },
+  {
+    &quot;id&quot;: &quot;snow&quot;,
+    &quot;label&quot;: &quot;雪天&quot;,
+    &quot;prompt&quot;: &quot;light snow, soft flakes, clean cold air, quiet street mood, warm practical lights&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 times（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;morning&quot;,
+    &quot;label&quot;: &quot;清晨&quot;,
+    &quot;prompt&quot;: &quot;early morning soft light, gentle shadows, quiet street, fresh and clean atmosphere&quot;
+  },
+  {
+    &quot;id&quot;: &quot;afternoon&quot;,
+    &quot;label&quot;: &quot;午后&quot;,
+    &quot;prompt&quot;: &quot;afternoon natural light, clear details, balanced contrast, relaxed daily portrait feeling&quot;
+  },
+  {
+    &quot;id&quot;: &quot;golden-hour&quot;,
+    &quot;label&quot;: &quot;黄昏&quot;,
+    &quot;prompt&quot;: &quot;golden hour warm sunlight, long shadows, glowing rim light, romantic cinematic warmth&quot;
+  },
+  {
+    &quot;id&quot;: &quot;blue-hour&quot;,
+    &quot;label&quot;: &quot;蓝调时刻&quot;,
+    &quot;prompt&quot;: &quot;blue hour sky, city lights just turned on, elegant contrast between cool ambient light and warm lamps&quot;
+  },
+  {
+    &quot;id&quot;: &quot;night&quot;,
+    &quot;label&quot;: &quot;夜晚&quot;,
+    &quot;prompt&quot;: &quot;night street photography, neon bokeh, warm practical lights, controlled face lighting&quot;
+  },
+  {
+    &quot;id&quot;: &quot;late-night&quot;,
+    &quot;label&quot;: &quot;深夜&quot;,
+    &quot;prompt&quot;: &quot;late night quiet mood, sparse practical lights, calm cinematic darkness, clean subject lighting&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 angles（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;front-half-body&quot;,
+    &quot;label&quot;: &quot;正面半身&quot;,
+    &quot;prompt&quot;: &quot;front-facing half-body portrait, subject looking naturally toward camera, balanced composition&quot;
+  },
+  {
+    &quot;id&quot;: &quot;over-shoulder&quot;,
+    &quot;label&quot;: &quot;侧身回眸&quot;,
+    &quot;prompt&quot;: &quot;over-the-shoulder pose, subject turning back naturally, dynamic candid moment&quot;
+  },
+  {
+    &quot;id&quot;: &quot;low-angle&quot;,
+    &quot;label&quot;: &quot;低机位&quot;,
+    &quot;prompt&quot;: &quot;low-angle environmental portrait, confident posture, landmark rising behind subject&quot;
+  },
+  {
+    &quot;id&quot;: &quot;high-angle&quot;,
+    &quot;label&quot;: &quot;高机位&quot;,
+    &quot;prompt&quot;: &quot;slightly high camera angle, elegant framing, visible ground texture and layered background&quot;
+  },
+  {
+    &quot;id&quot;: &quot;wide-environment&quot;,
+    &quot;label&quot;: &quot;远景环境人像&quot;,
+    &quot;prompt&quot;: &quot;wide environmental portrait, full body visible, strong sense of place, subject integrated into the scene&quot;
+  },
+  {
+    &quot;id&quot;: &quot;close-up&quot;,
+    &quot;label&quot;: &quot;近景特写&quot;,
+    &quot;prompt&quot;: &quot;close-up portrait, shallow depth of field, expressive eyes, background landmark softly blurred&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 lenses（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;35mm&quot;,
+    &quot;label&quot;: &quot;35mm&quot;,
+    &quot;prompt&quot;: &quot;35mm lens look, environmental context, natural perspective, moderate depth of field&quot;
+  },
+  {
+    &quot;id&quot;: &quot;50mm&quot;,
+    &quot;label&quot;: &quot;50mm&quot;,
+    &quot;prompt&quot;: &quot;50mm lens look, natural perspective, balanced subject and background separation&quot;
+  },
+  {
+    &quot;id&quot;: &quot;85mm&quot;,
+    &quot;label&quot;: &quot;85mm&quot;,
+    &quot;prompt&quot;: &quot;85mm portrait lens look, shallow depth of field, compressed background, creamy bokeh&quot;
+  },
+  {
+    &quot;id&quot;: &quot;wide&quot;,
+    &quot;label&quot;: &quot;广角环境&quot;,
+    &quot;prompt&quot;: &quot;wide-angle street photography, dynamic perspective, strong leading lines, no face distortion&quot;
+  },
+  {
+    &quot;id&quot;: &quot;tele&quot;,
+    &quot;label&quot;: &quot;长焦压缩&quot;,
+    &quot;prompt&quot;: &quot;telephoto compressed background, elegant layering, strong subject isolation, natural face shape&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 filmLooks（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;warm-portrait-film&quot;,
+    &quot;label&quot;: &quot;暖调人像&quot;,
+    &quot;prompt&quot;: &quot;warm portrait film color, soft highlight rolloff, fine grain, flattering but natural skin tone&quot;
+  },
+  {
+    &quot;id&quot;: &quot;high-iso-night-grain&quot;,
+    &quot;label&quot;: &quot;高感颗粒&quot;,
+    &quot;prompt&quot;: &quot;high ISO night film grain, rich shadows, slight halation around lights, documentary street feeling&quot;
+  },
+  {
+    &quot;id&quot;: &quot;cinematic-daylight&quot;,
+    &quot;label&quot;: &quot;电影日光&quot;,
+    &quot;prompt&quot;: &quot;cinematic daylight color grading, clean contrast, subtle film grain, natural dynamic range&quot;
+  },
+  {
+    &quot;id&quot;: &quot;neon-night&quot;,
+    &quot;label&quot;: &quot;霓虹夜景&quot;,
+    &quot;prompt&quot;: &quot;neon night color finish, controlled saturated practical lights, clean face exposure, rich dark tones&quot;
+  },
+  {
+    &quot;id&quot;: &quot;classic-bw&quot;,
+    &quot;label&quot;: &quot;经典黑白&quot;,
+    &quot;prompt&quot;: &quot;classic black and white photography, strong tonal contrast, rich midtones, timeless portrait mood&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 outfits（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;minimal-black&quot;,
+    &quot;label&quot;: &quot;黑色简洁&quot;,
+    &quot;prompt&quot;: &quot;minimal black outfit, clean silhouette, understated styling, contemporary editorial feeling&quot;
+  },
+  {
+    &quot;id&quot;: &quot;light-coat&quot;,
+    &quot;label&quot;: &quot;浅色外套&quot;,
+    &quot;prompt&quot;: &quot;light neutral coat, soft fabric texture, simple layered outfit, natural daily styling&quot;
+  },
+  {
+    &quot;id&quot;: &quot;street-layer&quot;,
+    &quot;label&quot;: &quot;街头层次&quot;,
+    &quot;prompt&quot;: &quot;streetwear layered outfit, relaxed fit, practical texture, not too flashy&quot;
+  }
+]</textarea></div><div class="field full"><label>变量选项 moods（JSON 数组）</label><textarea>[
+  {
+    &quot;id&quot;: &quot;calm&quot;,
+    &quot;label&quot;: &quot;安静&quot;,
+    &quot;prompt&quot;: &quot;calm expression, natural posture, introspective but approachable mood&quot;
+  },
+  {
+    &quot;id&quot;: &quot;candid&quot;,
+    &quot;label&quot;: &quot;抓拍&quot;,
+    &quot;prompt&quot;: &quot;candid moment, slight movement, natural micro-expression, documentary realism&quot;
+  },
+  {
+    &quot;id&quot;: &quot;confident&quot;,
+    &quot;label&quot;: &quot;自信&quot;,
+    &quot;prompt&quot;: &quot;confident posture, composed expression, editorial presence without exaggeration&quot;
+  }
+]</textarea></div></div><label class="switch-row"><input type="checkbox" checked=""/>启用模板</label><button class="primary-button" type="button">创建模板</button></div></div></section><!--$--><!--/$--></main><script src="/_next/static/chunks/0jl966cpabt0n.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[60289,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"\"]\n3:I[42459,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"default\"]\n4:I[20556,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"default\"]\n5:I[37917,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"ClientPageRoot\"]\n6:I[67152,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\",\"/_next/static/chunks/0o8-b98d~flew.js\"],\"default\"]\n9:I[76152,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"OutletBoundary\"]\na:\"$Sreact.suspense\"\nd:I[76152,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"ViewportBoundary\"]\nf:I[76152,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"MetadataBoundary\"]\n11:I[24479,[\"/_next/static/chunks/070g9zc2xw1t7.js\",\"/_next/static/chunks/0czfy4s-0u4rp.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/09f0fz_--~2cs.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"admin\",\"templates\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"admin\",{\"children\":[\"templates\",{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/09f0fz_--~2cs.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/070g9zc2xw1t7.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/0czfy4s-0u4rp.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"children\":[\"$\",\"body\",null,{\"children\":[[\"$\",\"header\",null,{\"className\":\"topbar\",\"children\":[[\"$\",\"$L2\",null,{\"className\":\"brand\",\"href\":\"/studio\",\"children\":[[\"$\",\"span\",null,{\"className\":\"brand-mark\",\"children\":\"AI\"}],[\"$\",\"span\",null,{\"children\":\"AI 摄影棚\"}]]}],[\"$\",\"nav\",null,{\"className\":\"nav\",\"aria-label\":\"主导航\",\"children\":[[\"$\",\"$L2\",null,{\"href\":\"/studio\",\"children\":\"摄影棚\"}],[\"$\",\"$L2\",null,{\"href\":\"/gallery\",\"children\":\"画廊\"}],[\"$\",\"$L2\",null,{\"href\":\"/templates\",\"children\":\"模板\"}],[\"$\",\"$L2\",null,{\"href\":\"/admin/templates\",\"children\":\"后台\"}]]}],[\"$\",\"div\",null,{\"className\":\"status-strip\",\"children\":[[\"$\",\"span\",null,{\"className\":\"status-dot\"}],[\"$\",\"span\",null,{\"children\":[\"Provider: \",\"mock\"]}]]}]]}],[\"$\",\"main\",null,{\"className\":\"page\",\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L5\",null,{\"Component\":\"$6\",\"serverProvidedParams\":{\"searchParams\":{},\"params\":{},\"promises\":[\"$@7\",\"$@8\"]}}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0o8-b98d~flew.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L9\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@b\"}]}]]}],{},null,false,null]},null,false,\"$@c\"]},null,false,\"$@c\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"$a\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L10\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$11\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/09f0fz_--~2cs.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"xbnqC_TC-qu0IYTpCrubx\"}\n"])</script><script>self.__next_f.push([1,"12:[]\nc:\"$W12\"\n7:{}\n8:\"$0:f:0:1:1:children:1:children:1:children:0:props:children:0:props:serverProvidedParams:params\"\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"b:null\n10:[[\"$\",\"title\",\"0\",{\"children\":\"AI 摄影棚\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"上传人像并批量生成地点一致的人像写真\"}]]\n"])</script></body></html>

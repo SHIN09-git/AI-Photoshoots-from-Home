@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assets Asset[]
+  jobs   GenerationJob[]
+  images GeneratedImage[]
+}
+
+model Asset {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  type      AssetType
+  url       String
+  thumbUrl  String?
+  mimeType  String
+  size      Int
+  width     Int?
+  height    Int?
+  metadata  Json?
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+enum AssetType {
+  PERSON_REFERENCE
+  LOCATION_REFERENCE
+  GENERATED_IMAGE
+  TEMPLATE_COVER
+}
+
+model StudioTemplate {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  category        String
+  description     String
+  coverUrl        String?
+  coverPalette    Json
+  tags            Json
+  locationAnchor  Json
+  promptBase      String
+  negativePrompt  String?
+  variables       Json
+  defaultSettings Json?
+  isActive        Boolean  @default(true)
+  version         Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  jobs GenerationJob[]
+}
+
+model GenerationJob {
+  id                String         @id @default(cuid())
+  userId            String
+  user              User           @relation(fields: [userId], references: [id])
+  templateId        String
+  template          StudioTemplate @relation(fields: [templateId], references: [id])
+  status            JobStatus      @default(PENDING)
+  referenceAssetIds Json
+  requestedCount    Int
+  settings          Json
+  promptMatrix      Json
+  provider          String
+  providerModel     String?
+  errorMessage      String?
+  createdAt         DateTime       @default(now())
+  startedAt         DateTime?
+  completedAt       DateTime?
+
+  images GeneratedImage[]
+}
+
+enum JobStatus {
+  PENDING
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELED
+}
+
+model GeneratedImage {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  jobId          String
+  job            GenerationJob @relation(fields: [jobId], references: [id])
+  assetId        String?
+  url            String
+  thumbUrl       String?
+  prompt         String
+  negativePrompt String?
+  variables      Json
+  provider       String
+  providerModel  String?
+  seed           String?
+  width          Int?
+  height         Int?
+  isFavorite     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  deletedAt      DateTime?
+}
