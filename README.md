@@ -4,8 +4,10 @@
 
 ## 运行
 
+使用 Node.js 22.12 或更新的受支持版本（CI 使用 Node.js 24），以及 pnpm 10.32.1。依赖版本由 `pnpm-lock.yaml` 固定。
+
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 cp .env.example .env.local
 pnpm prisma:generate
 pnpm prisma:migrate
@@ -80,6 +82,8 @@ OPENAI_IMAGE_OUTPUT_FORMAT="png"
 - 手动评分：identity / location / composition
 
 ## 验证
+
+GitHub Actions 会对 `main` 和 PR 自动执行安装、Lint、测试和生产构建，使用 Mock Provider，不需要真实 API key。Vitest 的路径别名同时支持 Windows 和带空格的目录。
 
 ```bash
 pnpm lint
