@@ -30,8 +30,8 @@ importers:
         specifier: 16.4.2
         version: 16.4.2(@babel/core@7.29.7)(@types/node@25.9.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       openai:
-        specifier: ^6.49.0
-        version: 6.49.0(ws@8.22.0)(zod@4.6.7)
+        specifier: ^7.39.0
+        version: 7.39.0(ws@8.22.0)(zod@4.6.7)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -2432,14 +2432,15 @@ packages:
   ohash@2.0.12:
     resolution: {integrity: sha512-65S/5gk9YSsaRjcyf7Nfa6h/d3E8/1gslpXfI4W7Dxn/oap8IKRuNT5VXkLQ1YFKIEg4apRY4Pj6aiwFzrDdmw==}
 
-  openai@6.49.0:
-    resolution: {integrity: sha512-aYCc0C6L864eR6WSYIwQGyXriw/nIyZx0ObvhzOEVuk0zoBDpynjSbrionWI7q65B5H8jJX0DXR9snEzM6bfPg==}
-    hasBin: true
+  openai@7.39.0:
+    resolution: {integrity: sha512-iEA9ndbrj32vhYZwJg2v9BQVuztGUOb2SBQU16ZcWNkQHWEBjtarxjqR9c6d5PbWMG0Eyfhk66OZ0iJ8XpFjyw==}
+    engines: {node: '>=22.0.0'}
     peerDependencies:
       '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
       '@smithy/hash-node': '>=4.3.0 <5'
       '@smithy/signature-v4': '>=5.4.0 <6'
-      ws: ^8.18.0
+      undici: '>=5 <9'
+      ws: ^8.21.0
       zod: ^3.25 || ^4.0
     peerDependenciesMeta:
       '@aws-sdk/credential-provider-node':
@@ -2447,6 +2448,8 @@ packages:
       '@smithy/hash-node':
         optional: true
       '@smithy/signature-v4':
+        optional: true
+      undici:
         optional: true
       ws:
         optional: true
@@ -5442,7 +5445,7 @@ snapshots:
 
   ohash@2.0.12: {}
 
-  openai@6.49.0(ws@8.22.0)(zod@4.6.7):
+  openai@7.39.0(ws@8.22.0)(zod@4.6.7):
     optionalDependencies:
       ws: 8.22.0
       zod: 4.6.7
